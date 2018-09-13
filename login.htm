@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+  <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-database.js"></script>
+  <script src="home.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial;
+            padding: 10px;
+            background: lightblue;
+        }
+        /* Header/Blog Title */
+        
+        .header {
+            padding: 30px;
+            text-align: center;
+            background: #66b9bf;
+            height: 250px;
+            box-shadow: 0px 0px 20px dimgrey;
+        }
+        
+        .header h1 {
+            font-size: 50px;
+        }
+        
+       
+        }
+        .hidden {
+            display: none;
+        }
+        
+        .container {
+            padding: 16px;
+        }
+        /* Style the top navigation bar */
+        
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+            box-shadow: 0px 0px 20px dimgrey;
+        }
+        /* Style the topnav links */
+        
+        .topnav a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        /* Change color on hover */
+        
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        
+       
+        /* Add a card effect for articles */
+        
+        .card {
+            background-color: lightgrey;
+            padding: 20px;
+            margin-top: 20px;
+	    width: 70%;
+
+        }
+        
+        @media screen and (max-width: 400px) {
+            .topnav a {
+                float: none;
+                width: 100%;
+            }
+        }
+
+	.button{
+		background-color: lightblue;
+		font-size: 20px;
+		
+	}
+        .button:hover{
+            background-color: blue;
+            
+        }
+        .flexbox{
+/*                width: 400px;*/
+        
+            }
+            .flexbox>div
+            {
+
+                transition: 1s;
+                border: 2px solid black;
+/*                border-radius: 10px;*/
+                border: 2px solid black;
+                height: 100px;
+                margin: 10px -10px 10px 0px;
+                padding: 20px 20px 20px 20px;
+                box-shadow: 0px 0px 20px dimgrey;
+                overflow: hidden;
+            }
+            .flexbox>div:nth-child(1){ background-color: lightgrey;}
+
+            .flexbox>div:nth-child(2){ background-color: lightgrey;}
+
+            .flexbox>div:nth-child(3){ background-color: lightgrey;}
+
+            .flexbox>div:nth-child(4){ background-color: lightgrey;}
+
+            .flexbox>div:hover{
+                
+                color: white;
+                font-weight: bold;
+            }
+            .flexbox>div:nth-child(1):hover{background-color: royalblue; }
+
+            .flexbox>div:nth-child(2):hover{background-color: crimson;}
+
+            .flexbox>div:nth-child(3):hover{background-color: black;}
+
+            .flexbox>div:nth-child(4):hover{background-color: darkgreen;}
+        p {
+                height: 320px;
+                overflow: hidden;
+                font-family:sans-serif;
+            }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="header">
+        <h1>BOOK BANK</h1>
+        <p>Every Book You Need!</p>
+    </div>
+
+    <div class="topnav">
+        <a href="login.htm">Home</a>
+        <a href="logabout.htm">About Us</a>
+        <a href="logcontact.htm">Contact</a>
+        <a href="home.htm">Logout</a>
+    </div>
+
+            <div class="flexbox">
+            <div style="min-height: fit-content;" onclick="gotosearch()">
+                Click here to search books.You can choose from the wide range of 4 lakh volumes of books with around 1000 different topics.
+                It facilitates automated circulation (issue) of resources and speedy access to the book required by the students.
+                It helps to search for library resources by the name of the book. The status of availability is determined when the book is present on the list of books.               
+            </div>
+            <div style="min-height: fit-content;" onclick="gotoreturn()">
+                Click here to return your books.
+                    The students will have access to the books for 7 days. Upon reaching the maximum day limit the student has to pay fine. The fine ranges from Rs.2/day to Rs.10/day according to the delay while returning the book. The file will be detucted from the caution deposit paid by the student.
+                    The student can keep maximum of two books at a time.
+                    The student can also renew the book twice and not more than that.
+                
+            </div>
+        </div>
+
+
+
+
+</body>
+
+</html>

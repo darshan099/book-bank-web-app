@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        function asd(a) {
+            if (a == 1) {
+                document.getElementById("searchform").style.display = "none";
+                document.getElementById("returnform").style.display = "block";
+            } else {
+                document.getElementById("searchform").style.display = "block";
+                document.getElementById("returnform").style.display = "none";
+            }
+        }
+    </script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body{
+            font-family: Arial;
+            padding: 10px;
+            background: lightblue;
+        }
+        /* Header/Blog Title */
+        
+        .header {
+            padding: 30px;
+            text-align: center;
+            background: #66b9bf;
+        }
+        
+        .header h1 {
+            font-size: 50px;
+        }
+        
+        @keyframes slidy
+        {
+            0% { left: 0%; }
+            20% { left: 0%; }
+            25% { left: -100%; }
+            45% { left: -100%; }
+            50% { left: -200%; }
+            70% { left: -200%; }
+            75% { left: -300%; }
+            95% { left: -300%; }
+            100% { left: -400%; }
+
+        }
+        div#slider {overflow: hidden;}
+        div#slider figure img {width: 20%; float: left;}
+        div#slider figure{
+            position: relative;
+            width: 500%;
+            margin: 0;
+            left: 0;
+            text-align: left;
+            font-size: 0;
+            animation: 30s slidy infinite;
+        }
+        .hidden {
+            display: none;
+        }
+        
+        .container {
+            padding: 16px;
+        }
+        /* Style the top navigation bar */
+        
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
+        /* Style the topnav links */
+        
+        .topnav a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        /* Change color on hover */
+        
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        
+        .mypara:first-letter {
+            font-size: 200%;
+        }
+        /* Create two unequal columns that floats next to each other */
+        /* Left column */
+        
+        .leftcolumn {
+            float: left;
+            width: 65%;
+          
+        }
+        /* Right column */
+        
+        .rightcolumn {
+            float: right;
+            width: 35%;
+            background-color: #f1f1f1;
+           /* padding-left: 20px;*/
+        }
+        /* Fake image */
+        
+        .fakeimg {
+            width: 800px;
+            height: 500px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-image: url("Tulips.jpg");
+            padding: 20px;
+        }
+        /* Add a card effect for articles */
+        
+        .card {
+            
+            padding: 20px;
+            margin-top: 20px;
+        }
+        /* Clear floats after the columns */
+        
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        /* Footer */
+        
+        .footer {
+            padding: 20px;
+            text-align: center;
+            background: #ddd;
+            margin-top: 20px;
+        }
+        /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+        
+        @media screen and (max-width: 800px) {
+            .leftcolumn,
+            .rightcolumn {
+                width: 100%;
+                padding: 0;
+            }
+        }
+        /* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+        
+        @media screen and (max-width: 400px) {
+            .topnav a {
+                float: none;
+                width: 100%;
+            }
+        }
+	.button{
+		background-color: lightgrey;
+		font-size: 20px;
+		
+	}
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>BOOK BANK</h1>
+        <p>Every Book You Need!</p>
+    </div>
+
+    <div class="topnav">
+        <a href="#">Home</a>
+        <a href="logabout.htm">About Us</a>
+        <a href="logcontact.htm">Contact</a>
+	<a href="home.htm">Logout</a>
+    </div>
+
+    <div class="row">
+        <div class="leftcolumn">
+            <div class="card">
+                <div id="slider">
+                    <figure>
+                        <img src="2.jpeg" alt>
+                        <img src="3.jpeg" alt>
+                        <img src="4.jpeg" alt>
+                        <img src="5.jpeg" alt>
+                    </figure>
+                </div>
+                <p class="mypara">The place to lend, borrow and donate books.  We have emerged as the largest books lending library in the country with enormous collection of 4 lakh volumes of books, 1 lakh happy members, branches spread all over the country and 18 years of unbeatable service. The basic idea was to facilate people to borrow the very expensive books at an affordable rate and like all enterprices started humbly with a handful of people in the year 1996. From the beginning the company was founded on the principle of building and bringing to life greatest ideas to progress the future of our country.</p>
+            </div>
+
+        </div>
+        <div class="rightcolumn" style="margin-top: 40px">
+
+            <div class="card">
+                <div class="topnav">
+                    <a href="#" onclick="asd(1);">Return</a>
+                    <a href="#" onclick="asd(2);">Search</a>
+                </div>
+                <div class="container" id="searchform">
+                    <form id="searchForm">
+                    <h1>Search</h1>
+                    <p>Search and borrow from our wide collection of books on various topics.<br>Search using any one of the following:</p>
+                    <hr>
+                    <br>
+                    <label for="title"><b>Title</b></label>
+                    <input type="text" placeholder="Enter Title" id="title" required style="margin-left: 90px">
+	  	    <br>
+                    <br>
+                    <label for="author"><b>Author</b></label>
+                    <input type="text" placeholder="Enter Author name" id="auhtor" required style="margin-left: 68px">
+                    <br>
+		    <br>
+                    <label for="isbn"><b>ISBN</b></label>
+                    <input type="isbn" placeholder="Enter ISBN" required style="margin-left: 86px">
+                    <br>
+		    <br>
+
+
+                        
+		        	<button type="submit" onclick="searchForm()"  <button class="button"  style="height:40px;width:100px"> Search </button>
+                    </form>
+                    </div>
+                    <div class="container hidden" id="returnform" >
+                    <form id="returnForm">
+                    <h1>Return</h1>
+                    <p>Enter book details to return.</p>
+		            <hr>
+                    <br>
+		    <br>
+                    
+                    <label for="title"><b>Title</b></label>
+                    <input type="text" placeholder="Enter Title" id="title" required style="margin-left: 90px">
+	  	    <br>
+                    <br>
+                    <label for="author"><b>Author</b></label>
+                    <input type="text" placeholder="Enter Author name" id="auhtor" required style="margin-left: 68px">
+                    <br>
+		    <br>
+                    <label for="isbn"><b>ISBN</b></label>
+                    <input type="isbn" placeholder="Enter ISBN" required style="margin-left: 85px">
+                    <br>
+                    <br>
+                    <button type="submit" onclick="returnForm()"  <button class="button" style="height:40px;width:100px"> Return </button>
+                    </form>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+</html>

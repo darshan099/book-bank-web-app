@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+     <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-database.js"></script>
+ 
+<script src="home.js"></script>
+      
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body{
+            font-family: Arial;
+            padding: 10px;
+            background: lightblue;
+        }
+        /* Header/Blog Title */
+        
+        .header {
+            padding: 30px;
+            text-align: center;
+            background: #66b9bf;
+            box-shadow: 0px 0px 20px dimgrey;
+
+                        
+        }
+        
+        .header h1 {
+            font-size: 50px;
+        }
+        
+       
+        .hidden {
+            display: none;
+        }
+        
+        .container {
+            padding: 16px;
+        }
+        /* Style the top navigation bar */
+        
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+            box-shadow: 0px 0px 20px dimgrey;
+            
+        }
+        /* Style the topnav links */
+        
+        .topnav a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        /* Change color on hover */
+        
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        
+      
+        /* Add a card effect for articles */
+        
+        .card {
+            
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0px 0px 20px dimgrey
+        }
+       
+        
+        @media screen and (max-width: 400px) {
+            .topnav a {
+                float: none;
+                width: 100%;
+            }
+        }
+	.button{
+		background-color: lightgrey;
+		font-size: 20px;
+		
+	}
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 12px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+  box-shadow: 0px 0px 20px dimgrey;
+
+}
+
+#myUL {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+    box-shadow: 0px 0px 20px dimgrey;
+}
+
+#myUL li a {
+  border: 1px solid #ddd;
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block
+}
+
+#myUL li a:hover:not(.header) {
+  background-color: #eee;
+}
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>BOOK BANK</h1>
+        <p>Every Book You Need!</p>
+    </div>
+
+    <div class="topnav">
+        <a href="login.htm">Home</a>
+        <a href="logabout.htm">About Us</a>
+        <a href="logcontact.htm">Contact</a>
+	<a href="home.htm">Logout</a>
+    </div>
+
+   
+                <div class="container" id="searchform">
+                             <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for books.." title="Type in a name">
+    
+    <script type="text/javascript">
+        
+  document.getElementById('searchform').innerHTML+='<ul id="myUL">';
+  var rref=firebase.database().ref("users/"+localStorage.getItem("username")+"/books").on('child_added',function(gb)
+    {  
+      var data=gb.val();
+      var book_name=gb.val().book;
+      var time_of_book=gb.val().date;
+      document.getElementById('myUL').innerHTML+=`<li onclick="removebook('`+book_name+`',`+time_of_book+`);"><a href="#">`+book_name+`</a></li>`;
+      console.log("firebase accessed");
+      
+  });
+                                            
+//  firebase.database().ref("users/"+localStorage.getItem("username")+"/books").on('value',function(gb){
+//            gb.forEach(function(cgb)
+//            {
+//                console.log(gb.val());
+//                cgb.forEach(function(ccgb)
+//                {
+//                    var data=ccgb.val();
+//                  document.getElementById('myUL').innerHTML+=`<li onclick="removebook('`+data+`');"><a href="#">`+data+`</a></li>`;
+//                    
+//                });
+//            });
+//        });
+        
+                    
+    </script>
+    
+<!--
+<ul id="myUL"  >
+  <li onclick="removebook('Wings of Fire');"><a href="#">Wings of Fire</a></li>
+  <li onclick="removebook('Database Management');"><a href="#">Database Management</a></li>
+
+  <li onclick="removebook('Song of ice and fire');"><a href="#">Song of ice and fire</a></li>
+  <li onclick="removebook('OOPS');"><a href="#">OOPS</a></li>
+
+  <li onclick="removebook('Case Tools');"><a href="#">Case Tools</a></li>
+  <li onclick="removebook('Half Girlfriend');"><a href="#">Half Girlfriend</a></li>
+  <li onclick="removebook('Discrete Math');"><a href="#">Discrete Math</a></li>
+</ul>
+-->
+</div>
+<script>
+function myFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+</script>                    
+    
+    
+</body>
+
+</html>
